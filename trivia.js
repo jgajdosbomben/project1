@@ -39,6 +39,14 @@ const questions = [
         "incorrect answers": [ "675300", "3 million"],
         "used": false
     },  
+    {
+        "id": 6,
+        "category": "Science",
+        "question": "What type of number is Pi?",
+        "correct answer": "Irrational",
+        "incorrect answers": [ "Rational", "Integer"],
+        "used": false
+    }
 ];
 
 export function allQuestions() {

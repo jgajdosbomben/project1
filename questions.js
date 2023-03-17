@@ -2,53 +2,80 @@ const questions = [
     {
         "id": 1,
         "category": "Science",
-        "question": "What is a comet made of?",
+        "question": "What is a comet made of? \n a) Dust, rock, and ice \n b) Gas \n c) Rock",
         "correct answer": "Dust, rock, and ice",
-        "incorrect answers": [ "Gas", "Rock"],
+        "correct answer letter": "a",
         "used": false
     },
     {
         "id": 2,
         "category": "Science",
-        "question": "What is an asteroid made of?",
+        "question": "What is an asteroid made of? \n a) Ice \n b) Dust \n c) Rock",
         "correct answer": "Rock",
-        "incorrect answers": [ "Ice", "Dust"],
+        "correct answer letter": "c",
         "used": false
     },
     {
         "id": 3,
         "category": "Science",
-        "question": "How many earths can fit inside the sun?",
+        "question": "How many earths can fit inside the sun? \n a) 3 million \n b) 1.3 million \n c) 675300",
         "correct answer": "1.3 million",
-        "incorrect answers": [ "675300", "3 million"],
+        "correct answer letter": "b",
         "used": false
     },
     {
         "id": 4,
         "category": "Science",
-        "question": "What is the name of the galaxy where Earth resides?",
+        "question": "What is the name of the galaxy where Earth resides? \n a) The Andromeda Galaxy \n b) The Cygnus A Galaxy \n c) The Milky Way Galaxy",
         "correct answer": "The Milky Way Galaxy",
-        "incorrect answers": [ "The Andromeda Galaxy", "The Cygnus A Galaxy"],
+        "correct answer letter": "c",
         "used": false
     },
     {
         "id": 5,
         "category": "Science",
-        "question": "What type of star is the Sun?",
+        "question": "What type of star is the Sun? \n a) Yellow Dwarf \n b) Red Giant \n c) Brown Dwarf ",
         "correct answer": "Yellow Dwarf",
-        "incorrect answers": [ "675300", "3 million"],
+        "correct answer letter": "a",
         "used": false
     },  
     {
         "id": 6,
         "category": "Science",
-        "question": "What type of number is Pi?",
+        "question": "What type of number is Pi? \n a) Integer \n b) Irrational \n c) Rational",
         "correct answer": "Irrational",
-        "incorrect answers": [ "Rational", "Integer"],
+        "correct answer letter": "b",
         "used": false
     }
 ];
 
-export function allQuestions() {
-    return questions;
+// export function allQuestions() {
+//     return questions;
+// };
+
+function getRandomQuestion() {
+//get random index value
+  let randomIndex = Math.floor(Math.random()*questions.length);
+//   console.log(randomIndex);
+
+// check if used = true;
+
+while (questions[randomIndex].used === true) {
+    randomIndex = Math.floor(Math.random()*questions.length);
+    // console.log(randomIndex);
+    // console.log(questions[randomIndex].used);
 };
+
+// get random question
+  const randomQuestion = questions[randomIndex].question;   
+  questions[randomIndex].used = true;
+//    console.log(questions[randomIndex].used);
+
+  return randomQuestion;
+};
+
+for (let i=0; i < questions.length ; i++) {
+    console.log(getRandomQuestion());
+};
+
+// questions[]

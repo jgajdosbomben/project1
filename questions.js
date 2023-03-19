@@ -49,33 +49,30 @@ const questions = [
     }
 ];
 
-// export function allQuestions() {
-//     return questions;
-// };
-
-function getRandomQuestion() {
+export function getRandomQuestion() {
 //get random index value
   let randomIndex = Math.floor(Math.random()*questions.length);
 //   console.log(randomIndex);
-
+  
 // check if used = true;
-
 while (questions[randomIndex].used === true) {
     randomIndex = Math.floor(Math.random()*questions.length);
     // console.log(randomIndex);
     // console.log(questions[randomIndex].used);
 };
-
 // get random question
   const randomQuestion = questions[randomIndex].question;   
   questions[randomIndex].used = true;
 //    console.log(questions[randomIndex].used);
-
   return randomQuestion;
 };
 
-for (let i=0; i < questions.length ; i++) {
-    console.log(getRandomQuestion());
-};
 
+//execute for loop to run all questions
+export function loopThroughQuestions () {
+    for (let i=0; i < questions.length ; i++) {
+    console.log(getRandomQuestion());
+    };
+};
 // questions[]
+loopThroughQuestions();

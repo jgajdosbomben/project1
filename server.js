@@ -1,5 +1,5 @@
 import express from "express";
-import {testRouter} from './testRouter.js';
+import { questionsRouter } from "./questionsRouter.js";
 
 const app = express();
 
@@ -7,15 +7,17 @@ const PORT = 4000;
 
 app.use(express.json());
 
-app.listen(PORT, function(){
-    console.log(`Listening on port ${PORT}`);
-});
+app.use('/questions', questionsRouter);
+
 
 app.get('/', (req, res) =>{
     res.send("Trivia World");
 });
 
-app.get('/questions', (req, res) => {
-    res.send("Hello");
-});
+// app.get('/questions', (req, res) => {
+//     res.send("Type a, b, or c for your answer.");
+// });
 
+app.listen(PORT, function(){
+    console.log(`Listening on port ${PORT}`);
+});

@@ -1,3 +1,7 @@
+import PromptSync from "prompt-sync";
+
+const prompt = PromptSync();
+
 const questions = [
     {
         "id": 1,
@@ -49,7 +53,9 @@ const questions = [
     }
 ];
 
-export function getRandomQuestion() {
+let currentQuestionId = 1;
+
+export function getRandomQuestion(currentQuestionID) {
 //get random index value
   let randomIndex = Math.floor(Math.random()*questions.length);
 //   console.log(randomIndex);
@@ -64,14 +70,28 @@ while (questions[randomIndex].used === true) {
   const randomQuestion = questions[randomIndex].question;   
   questions[randomIndex].used = true;
 //    console.log(questions[randomIndex].used);
+// assign randomIndex to currentQuestionId global variable
+currentQuestionId = randomIndex;
   return randomQuestion;
 };
 
+function checkAnswer (answer, currentQuestionID) {
+if (answer === questions[currentQuestionID]["correct answer letter"]) {
+    console.log("Correct! Onto the next question.\n")
+} else {
+    console.log(`Sorry, that answer is incorrect. The correct answer is: ${questions[currentQuestionId]["correct answer"]}\n`);
+};
+};
 
 //execute for loop to run all questions
 export function loopThroughQuestions () {
     for (let i=0; i < questions.length ; i++) {
-    console.log(getRandomQuestion());
+    console.log(getRandomQuestion(currentQuestionId));
+
+    // User input to answer question
+    let answer = prompt("Enter your answer: ");
+    console.log(`Answer: ${answer}`);
+    checkAnswer(answer, currentQuestionId);
     };
 };
 

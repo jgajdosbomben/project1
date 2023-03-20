@@ -74,5 +74,7 @@ export function loopThroughQuestions () {
     console.log(getRandomQuestion());
     };
 };
+
+
 // questions[]
 loopThroughQuestions();

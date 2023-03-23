@@ -107,9 +107,10 @@ export function getTriviaQuestion() {
 export function checkAnswer(answer){
    let yourAnswerIs;
     if (answer === findQuestion["correct answer letter"]){
+        console.log(answer);
     yourAnswerIs = "Correct!";
    } else {
-    yourAnswerIs = `Sorry, your answer is ${answer} incorrect. The correct answer is: ${findQuestion["correct answer letter"]}`;
+    yourAnswerIs = `Sorry, your answer (${answer} ) is incorrect. The correct answer is: ${findQuestion["correct answer letter"]}`;
    };
    return yourAnswerIs;
    console.log(yourAnswerIs);
@@ -156,12 +157,6 @@ export function checkAnswer(answer){
 // export function loopThroughQuestions () {
 //     for (let i=0; i < questions.length ; i++) {
 //     console.log(getRandomQuestion(currentQuestionId));
-
-//     // User input to answer question
-//     let answer = prompt("Enter your answer: ");
-//     console.log(`Answer: ${answer}`);
-//     checkAnswer(answer, currentQuestionId);
-//     };
 // };
 
 

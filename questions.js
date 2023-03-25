@@ -117,6 +117,7 @@ export function addQuestion(question) {
 };
 
 export function deleteQuestion(idNumber) {
+    idNumber = parseInt(idNumber, 10);
     questions = questions.filter(x => x.id !== idNumber);
 };
 

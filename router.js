@@ -1,12 +1,7 @@
 import express from "express";
-import { getTriviaQuestion , checkAnswer } from "./questions.js";
-// import{ getRandomQuestion, loopThroughQuestions} from "./questions.js";
-export const router = express.Router();
+import { questions, getTriviaQuestion , checkAnswer, addQuestion, deleteQuestion} from "./questions.js";
 
-// router.get('/', (request, response) => {
-//     const questions = getRandomQuestion();
-//     response.send(questions);
-// });
+export const router = express.Router();
 
 router.get('/', (request, response) => {
     const questions = getTriviaQuestion();
@@ -18,7 +13,14 @@ router.post('/', (request, response) => {
     response.send(checkAnswer(answer));
 });
     
-    //questionsRouter.post('/answer', (request, response) => {
-        // user answer  and testing against the actual answer
-        // res.send("Correct or Incorrect based on the above");
-    // })
+router.post('/new', (request, response) => {
+    const newQuestion = request.body;
+    addQuestion(newQuestion);                    
+    response.send(questions);
+});
+
+router.delete('/:id', (request, response) => {
+    const questionToDelete = request.params.id;
+    deleteQuestion(questionToDelete);
+    response.send(questions);
+});

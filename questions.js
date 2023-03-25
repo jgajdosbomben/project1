@@ -81,7 +81,7 @@ export let questions = [
     }
 ];
 
-//Finds a question that has not been used before, i.e. not displayed to the user. Displays the question to the user.
+//Finds a question that has not been displayed to the user and then displays the question to the user.
 
 let findQuestion = null;
 
@@ -94,28 +94,35 @@ export function getTriviaQuestion() {
         questionToDisplay = findQuestion.question; //Assigns the question to the question that was just found above.
         findQuestion.used = true; //Change used property to true so that it will not be displayed again.
     };
-    // console.log(questionToDisplay); //Display question to user in command prompt.
-    // console.log(findQuestion.used); //Check that property was changed to true.
-    return questionToDisplay;
+      return questionToDisplay;
 };
 
-
+// Checks if the user's answer is correct
 export function checkAnswer(answer){
    let yourAnswerIs;
     if (answer === findQuestion.correctAnswerLetter){
         console.log(answer);
     yourAnswerIs = "Correct!";
    } else {
-    yourAnswerIs = `Sorry, your answer (${answer}) is incorrect. The correct answer is: ${findQuestion.correctAnswerLetter}`;
+    yourAnswerIs = `Sorry, your answer (${answer}) is incorrect. The correct answer is: ${findQuestion.correctAnswerLetter}) ${findQuestion.correctAnswer}`;
    };
    return yourAnswerIs;
    console.log(yourAnswerIs);
 };
 
+// Adds a question
 export function addQuestion(question) {
     questions.push(question);
 };
 
+// Edit's a question
+export function editQuestion(idNumber, newData) {
+    idNumber = parseInt(idNumber, 10);
+    const idToEdit = questions.find(x => x.id === idNumber);
+    Object.assign(idToEdit, newData);
+};
+
+// Delete's a question
 export function deleteQuestion(idNumber) {
     idNumber = parseInt(idNumber, 10);
     questions = questions.filter(x => x.id !== idNumber);

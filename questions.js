@@ -84,12 +84,13 @@ export let questions = [
 //Finds a question that has not been displayed to the user and then displays the question to the user.
 
 let findQuestion = null;
+let score = 0;
 
 export function getTriviaQuestion() {
     let questionToDisplay = null;
     findQuestion = questions.find(question => question.used === false); //Finds a question where used===false.
     if (findQuestion === undefined) {
-        questionToDisplay = "Game over. ";
+        questionToDisplay = `Game over. Your final score is ${score} out of ${questions.length}.`;
     } else {
         questionToDisplay = findQuestion.question; //Assigns the question to the question that was just found above.
         findQuestion.used = true; //Change used property to true so that it will not be displayed again.
@@ -101,10 +102,10 @@ export function getTriviaQuestion() {
 export function checkAnswer(answer){
    let yourAnswerIs;
     if (answer === findQuestion.correctAnswerLetter){
-        console.log(answer);
-    yourAnswerIs = "Correct!";
+        score += 1;
+        yourAnswerIs = `Correct! Your current score is ${score}`;
    } else {
-    yourAnswerIs = `Sorry, your answer (${answer}) is incorrect. The correct answer is: ${findQuestion.correctAnswerLetter}) ${findQuestion.correctAnswer}`;
+    yourAnswerIs = `Sorry, your answer (${answer}) is incorrect. The correct answer is: ${findQuestion.correctAnswerLetter}) ${findQuestion.correctAnswer}. Your score is ${score}`;
    };
    return yourAnswerIs;
    console.log(yourAnswerIs);
@@ -115,64 +116,15 @@ export function addQuestion(question) {
     questions.push(question);
 };
 
-// Edit's a question
+// Edits a question
 export function editQuestion(idNumber, newData) {
     idNumber = parseInt(idNumber, 10);
     const idToEdit = questions.find(x => x.id === idNumber);
     Object.assign(idToEdit, newData);
 };
 
-// Delete's a question
+// Deletes a question
 export function deleteQuestion(idNumber) {
     idNumber = parseInt(idNumber, 10);
     questions = questions.filter(x => x.id !== idNumber);
 };
-
-
-// // get random question
-// const randomQuestion = questions[randomIndex].question;   
-// questions[randomIndex].used = true;
-
-// let currentQuestionId = 1;
-
-// export function getRandomQuestion() {
-// //get random index value
-
-//   let randomIndex = Math.floor(Math.random()*questions.length);
-// //   console.log(randomIndex);
-  
-// // check if used = true then get another random index
-// while (questions[randomIndex].used === true) {
-//     randomIndex = Math.floor(Math.random()*questions.length);
-//     // console.log(randomIndex);
-//     // console.log(questions[randomIndex].used);
-// };
-// // get random question
-//   const randomQuestion = questions[randomIndex].question;   
-//   questions[randomIndex].used = true;
-// //    console.log(questions[randomIndex].used);
-
-// // assign randomIndex to currentQuestionId global variable
-// currentQuestionId = randomIndex;
-//   return randomQuestion;
-// };
-
-// function checkAnswer (answer) {
-// if (answer === questions[currentQuestionId]["correct answer letter"]) {
-//     console.log("Correct! Onto the next question.\n")
-// } else {
-//     console.log(`Sorry, that answer is incorrect. The correct answer is: ${questions[currentQuestionId][correctAnswer]}\n`);
-// };
-// };
-
-// //execute for loop to run all questions
-// export function loopThroughQuestions () {
-//     for (let i=0; i < questions.length ; i++) {
-//     console.log(getRandomQuestion(currentQuestionId));
-// };
-
-
-// // questions[]
-// loopThroughQuestions();
-
-

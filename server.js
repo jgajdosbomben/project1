@@ -14,5 +14,5 @@ app.use(express.json());
 app.use('/questions', router);
 
 app.get('/', (req, res) =>{
-    res.send("Trivia World");
+    res.send("Welcome to Trivia World!");
 });

@@ -103,9 +103,9 @@ export function checkAnswer(answer){
    let yourAnswerIs;
     if (answer === findQuestion.correctAnswerLetter){
         score += 1;
-        yourAnswerIs = `Correct! Your current score is ${score}`;
+        yourAnswerIs = `Correct! \nYour current score is ${score}.`;
    } else {
-    yourAnswerIs = `Sorry, your answer (${answer}) is incorrect. The correct answer is: ${findQuestion.correctAnswerLetter}) ${findQuestion.correctAnswer}. Your score is ${score}`;
+    yourAnswerIs = `Sorry, your answer (${answer}) is incorrect. \nThe correct answer is: ${findQuestion.correctAnswerLetter}) ${findQuestion.correctAnswer}. \nYour current score is ${score}.`;
    };
    return yourAnswerIs;
    console.log(yourAnswerIs);

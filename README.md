@@ -7,4 +7,3 @@ To Start the server:
 Open the file in VS Code.
 
 Using the command line enter: $ npm run start
-
